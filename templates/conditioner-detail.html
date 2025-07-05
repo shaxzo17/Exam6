@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ conditioner.name }} | Tafsilot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e8f7ff, #ffffff);
+      color: #00334d;
+    }
+
+    header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 600;
+      color: #0077b6;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #004466;
+      transition: 0.3s;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #cceeff;
+      color: #0077b6;
+    }
+
+    .korzinka {
+      background-color: white;
+      color: #0077b6;
+      border: 2px solid #0077b6;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .korzinka:hover {
+      background-color: #0077b6;
+      color: white;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .detail img {
+      width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .detail-text {
+      flex: 1;
+    }
+
+    .detail-text h2 {
+      font-size: 30px;
+      color: #0077b6;
+      margin-bottom: 8px;
+    }
+
+    .brand {
+      font-style: italic;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    .detail-text h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 24px;
+    }
+
+    .price {
+      font-size: 26px;
+      color: #0077b6;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-action {
+      background-color: white;
+      color: #0077b6;
+      border: 2px solid #0077b6;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .btn-action:hover {
+      background-color: #0077b6;
+      color: white;
+    }
+
+    .add-cart-btn {
+      display: inline-block;
+      background-color: #0077b6;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+      margin-right: 10px;
+    }
+
+    .add-cart-btn:hover {
+      background-color: #005f87;
+      color: #ffffff;
+    }
+
+    .cond-link {
+      color: #005577;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .cond-link:hover {
+      text-decoration: underline;
+      color: #0099cc;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Header + Nav -->
+  <header>
+    <div class="logo">Conditioners</div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'conditioners' %}">Conditioners</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'korzinka' %}" class="korzinka">
+              🛒 ({{ request.session.cart|length|default:0 }})
+      </a>
+    </nav>
+  </header>
+
+   {% if messages %}
+    <ul style="max-width: 800px; margin: 20px auto; list-style: none; padding: 0;">
+      {% for message in messages %}
+        <li style="
+          background-color: #dff6e1;
+          color: #006600;
+          font-weight: bold;
+          padding: 12px 18px;
+          border-radius: 8px;
+          margin-bottom: 15px;
+          border-left: 5px solid #33cc33;
+        ">
+          {{ message }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <!-- Mahsulot tafsiloti -->
+  <div class="container">
+    <div class="detail">
+      {% if conditioner.image %}
+        <img src="{{ conditioner.image.url }}" alt="{{ conditioner.name }}">
+      {% else %}
+        <img src="/media/default/cond.jpg" alt="Rasm yo‘q">
+      {% endif %}
+    </div>
+
+    <div class="detail-text">
+      <h2>{{ conditioner.name }}</h2>
+      <div class="brand">{{ conditioner.brand }}</div>
+      <h3>{{ conditioner.desc }}</h3>
+      <div class="price">${{ conditioner.price }}</div>
+
+      <div class="action-buttons">
+        <a href="{% url 'add-to-cart' conditioner.id %}" class="add-cart-btn">🛒 Korzinkaga qo‘shish </a>
+        <a href="{% url 'conditioner-update' conditioner.id %}" class="btn-action">✏️ Tahrirlash</a>
+        <a href="{% url 'conditioner-delete' conditioner.id %}" class="btn-action">❌ O‘chirish</a>
+        <a href="{% url 'conditioner-create' %}" class="btn-action">🟢 Yangi qo‘shish</a>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin: 30px 0;">
+        {% if previous %}
+          <a href="{% url 'conditioner-detail' previous.id %}" class="cond-link">⏪ Avvalgi</a>
+        {% else %}
+          <span></span>
+        {% endif %}
+
+        {% if next %}
+          <a href="{% url 'conditioner-detail' next.id %}" class="cond-link">Keyingi ⏩</a>
+        {% endif %}
+      </div>
+
+
+    </div>
+  </div>
+
+</body>
+</html>

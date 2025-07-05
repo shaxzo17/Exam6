@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Conditioners | Mahsulotlar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e1f4ff, #f8fdff);
+      color: #00334d;
+    }
+
+    header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      font-weight: 600;
+      color: #0077b6;
+    }
+
+    .logo svg {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      fill: #0099cc;
+    }
+
+    .add-btn {
+      background-color: #0099cc;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      margin: 10px 20px 10px auto;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .add-btn:hover {
+      background-color: #0077b6;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #004466;
+      transition: 0.3s;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #cceeff;
+      color: #0077b6;
+    }
+
+    .korzinka {
+      background-color: white;
+      color: #0077b6;
+      border: 2px solid #0077b6;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .korzinka:hover {
+      background-color: #cceeff;
+      color: #0077b6;
+    }
+
+    .container {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      color: #005577;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #666;
+      height: 50px;
+      overflow: hidden;
+    }
+
+    .card .price {
+      margin: 12px 0;
+      font-size: 18px;
+      color: #0077b6;
+      font-weight: bold;
+    }
+
+    .card .korzinka-btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background-color: white;
+      color: #0077b6;
+      border: 2px solid #0077b6;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .card .korzinka-btn:hover {
+      background-color: #0077b6;
+      color: white;
+    }
+    .cond-link {
+      color: #005577;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
+    }
+
+    .cond-link:hover {
+      color: #0099cc;
+      text-decoration: underline;
+      letter-spacing: 0.5px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <!-- Snowflake SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M 272 16 Q 271 1 256 0 Q 241 1 240 16 L 240 89 L 240 89 L 203 53 L 203 53 Q 192 43 181 53 Q 171 64 181 75 L 240 135 L 240 135 L 240 228 L 240 228 L 159 182 L 159 182 L 137 101 L 137 101 Q 132 87 118 89 Q 104 94 106 109 L 120 159 L 120 159 L 56 122 L 56 122 Q 43 116 34 128 Q 28 141 40 150 L 104 187 L 104 187 L 54 200 L 54 200 Q 40 205 42 220 Q 47 233 62 231 L 143 209 L 143 209 L 224 256 L 224 256 L 143 303 L 143 303 L 62 281 L 62 281 Q 47 279 42 292 Q 40 307 54 312 L 104 325 L 104 325 L 40 362 L 40 362 Q 28 371 34 384 Q 43 396 56 390 L 120 353 L 120 353 L 106 403 L 106 403 Q 104 418 118 423 Q 132 425 137 412 L 159 331 L 159 331 L 240 284 L 240 284 L 240 377 L 240 377 L 181 437 L 181 437 Q 171 448 181 459 Q 192 469 203 459 L 240 423 L 240 423 L 240 496 L 240 496 Q 241 511 256 512 Q 271 511 272 496 L 272 423 L 272 423 L 309 459 L 309 459 Q 320 469 331 459 Q 341 448 331 437 L 272 377 L 272 377 L 272 284 L 272 284 L 353 331 L 353 331 L 375 412 L 375 412 Q 380 425 394 423 Q 408 418 406 403 L 392 353 L 392 353 L 456 390 L 456 390 Q 469 396 478 384 Q 484 371 472 362 L 408 325 L 408 325 L 458 312 L 458 312 Q 472 307 470 292 Q 465 279 450 281 L 369 303 L 369 303 L 288 256 L 288 256 L 369 209 L 369 209 L 450 231 L 450 231 Q 465 233 470 220 Q 472 205 458 200 L 408 187 L 408 187 L 472 150 L 472 150 Q 484 141 478 128 Q 469 116 456 122 L 392 159 L 392 159 L 406 109 L 406 109 Q 408 94 394 89 Q 380 87 375 100 L 353 181 L 353 181 L 272 228 L 272 228 L 272 135 L 272 135 L 331 75 L 331 75 Q 341 64 331 53 Q 320 43 309 53 L 272 89 L 272 89 L 272 16 L 272 16 Z"/>
+      </svg>
+      Conditioners
+    </div>
+
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'conditioners' %}">Conditioners</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'korzinka' %}" class="korzinka">
+                🛒 ({{ request.session.cart|length|default:0 }})
+      </a>
+    </nav>
+  </header>
+
+   {% if messages %}
+    <ul style="max-width: 800px; margin: 20px auto; list-style: none; padding: 0;">
+      {% for message in messages %}
+        <li style="
+          background-color: #dff6e1;
+          color: #006600;
+          font-weight: bold;
+          padding: 12px 18px;
+          border-radius: 8px;
+          margin-bottom: 15px;
+          border-left: 5px solid #33cc33;
+        ">
+          {{ message }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+   <div class="container">
+{% for conditioner in conditioners %}
+  <div class="card">
+    {% if conditioner.image %}
+        <img src  ="{{ conditioner.image.url }}" alt="{{ conditioner.name }}">
+    {% else %}
+        <img src="/media/default/cond.jpg" alt="Rasm yo‘q">
+    {% endif %}
+
+    <div class="card-body">
+        <h3>
+          <a href="{% url 'conditioner-detail' conditioner.id %}" class="cond-link">
+            {{ conditioner.name }}
+          </a>
+        </h3>
+
+        <p>{{ conditioner.brand }} - {{ conditioner.color }}</p>
+        <h7>{{ conditioner.desc }}</h7>
+        <div class="price">${{ conditioner.price }}</div>
+        <a href="{% url 'add-to-cart' conditioner.id %}" class="korzinka-btn">🛒 Korzinka</a>
+    </div>
+  </div>
+{% endfor %}
+
+  </div>
+
+  <!-- ADD CONDITIONER BUTTON - navdan tashqarida, pastga joylashgan -->
+  <div style="text-align: center; margin: 40px 0;">
+    <a href="{% url 'conditioner-create' %}" class="add-btn">➕ Add Conditioner</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Rahmat!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #d9f4ff, #f4fcff);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20%;
+      font-size: 36px;
+      color: #0077b6;
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -50px;
+      color: #b3e0ff;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px); opacity: 1; }
+      100% { transform: translateY(120vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✅ Xabaringiz uchun rahmat!</h1>
+
+      {% if messages %}
+          <ul style="display:none;">
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+          </ul>
+      {% endif %}
+
+    {% for i in "1234567890" %}
+      <div class="snowflake" style="
+        left: {% widthratio forloop.counter0|add:5 1 7 %}%;
+        animation-duration: {{ forloop.counter|add:2 }}s;
+        font-size: {{ forloop.counter|add:105 }}px;
+      ">❄</div>
+    {% endfor %}
+
+
+  <!-- Redirect to home in 3 seconds -->
+  <script>
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}";
+    }, 2000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Konditsionerni tahrirlash</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e0f7ff, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      font-weight: 600;
+      color: #0077b6;
+    }
+
+    .logo svg {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      fill: #0099cc;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #004466;
+      transition: 0.3s;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #cceeff;
+      color: #0077b6;
+    }
+
+    .korzinka {
+      background-color: white;
+      color: #0077b6;
+      border: 2px solid #0077b6;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .korzinka:hover {
+      background-color: #0077b6;
+      color: white;
+    }
+
+    .form-container {
+      max-width: 480px;
+      margin: 60px auto;
+      padding: 32px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0077b6;
+      font-size: 24px;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      color: #005577;
+      font-weight: 500;
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      box-sizing: border-box;
+      background-color: #f9fcff;
+      transition: border 0.3s;
+    }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+      border-color: #0077b6;
+      outline: none;
+    }
+
+    form input[type="file"] {
+      padding: 6px;
+      background-color: white;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      width: 100%;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #005f8e;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        margin: 40px 20px;
+        padding: 24px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .submit-btn {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">
+      <!-- Muz icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M 272 16 ... Z"/>
+      </svg>
+      Konditsioner
+    </div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'conditioners' %}">Conditioners</a>
+      <a href="#">Contact</a>
+      <a href="#" class="korzinka">🛒</a>
+    </nav>
+  </header>
+
+  <!-- FORM -->
+  <div class="form-container">
+    <h2>Konditsionerni tahrirlash</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="submit-btn">💾 Saqlash</button>
+    </form>
+  </div>
+
+</body>
+</html>

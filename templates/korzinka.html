@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Korzinka | Tanlangan mahsulotlar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e1f4ff, #f8fdff);
+      color: #00334d;
+    }
+
+    header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 600;
+      color: #0077b6;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #004466;
+      transition: 0.3s;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #cceeff;
+      color: #0077b6;
+    }
+
+    .korzinka-active {
+      background-color: #0077b6;
+      color: white !important;
+    }
+
+    .container {
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #005577;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #ffffff;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .empty {
+      text-align: center;
+      font-size: 18px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">🛒 Mahsulotlar</div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'conditioners' %}">Conditioners</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'korzinka' %}" class="korzinka-active">🛒</a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <!-- MAIN CONTENT -->
+<div class="container">
+  <h2>🛒 Sizning Korzinkangiz</h2>
+
+  {% if products %}
+    <ul>
+      {% for item in products %}
+        <li>
+          <a href="{% url 'conditioner-detail' item.id %}" style="text-decoration: none; color: #005577; font-weight: 600;">
+            {{ item.name }}
+          </a>
+          <strong>${{ item.price }}</strong>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty">Korzinka hozircha bo‘sh.</p>
+  {% endif %}
+</div>
+
+
+</body>
+</html>

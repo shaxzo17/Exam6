@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Conditioners | Sovuq Nafas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #d5f3ff, #f0faff);
+      color: #00334d;
+    }
+
+    header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      font-weight: 600;
+      color: #0077b6;
+    }
+
+    .logo svg {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      fill: #0099cc;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #004466;
+      transition: 0.3s ease-in-out;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #cceeff;
+      color: #0077b6;
+    }
+
+    .korzinka {
+      background-color: white;
+      color: #0077b6;
+      border: 2px solid #0077b6;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+    }
+
+    .korzinka:hover {
+      background-color: #0077b6;
+      color: white;
+    }
+
+    main {
+      padding: 70px 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 50px;
+      color: #003d5c;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #005577;
+    }
+
+    /* Tugma style o‘sha oldingiday qolsin */
+    .btn-konditsioner {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #0077b6;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 119, 182, 0.2);
+      transition: 0.3s ease-in-out;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-konditsioner.clicked {
+      background-color: white;
+      color: #0077b6;
+    }
+
+    /* Snowflakes container */
+    #snowContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Snowflake style */
+    .snowflake {
+      position: absolute;
+      color: #d4f1ff;
+      font-size: 20px;
+      animation: fall 3s linear forwards;
+      opacity: 0.8;
+    }
+
+    /* Falling animation */
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <!-- Snowflake SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M 272 16 Q 271 1 256 0 Q 241 1 240 16 L 240 89 L 240 89 L 203 53 L 203 53 Q 192 43 181 53 Q 171 64 181 75 L 240 135 L 240 135 L 240 228 L 240 228 L 159 182 L 159 182 L 137 101 L 137 101 Q 132 87 118 89 Q 104 94 106 109 L 120 159 L 120 159 L 56 122 L 56 122 Q 43 116 34 128 Q 28 141 40 150 L 104 187 L 104 187 L 54 200 L 54 200 Q 40 205 42 220 Q 47 233 62 231 L 143 209 L 143 209 L 224 256 L 224 256 L 143 303 L 143 303 L 62 281 L 62 281 Q 47 279 42 292 Q 40 307 54 312 L 104 325 L 104 325 L 40 362 L 40 362 Q 28 371 34 384 Q 43 396 56 390 L 120 353 L 120 353 L 106 403 L 106 403 Q 104 418 118 423 Q 132 425 137 412 L 159 331 L 159 331 L 240 284 L 240 284 L 240 377 L 240 377 L 181 437 L 181 437 Q 171 448 181 459 Q 192 469 203 459 L 240 423 L 240 423 L 240 496 L 240 496 Q 241 511 256 512 Q 271 511 272 496 L 272 423 L 272 423 L 309 459 L 309 459 Q 320 469 331 459 Q 341 448 331 437 L 272 377 L 272 377 L 272 284 L 272 284 L 353 331 L 353 331 L 375 412 L 375 412 Q 380 425 394 423 Q 408 418 406 403 L 392 353 L 392 353 L 456 390 L 456 390 Q 469 396 478 384 Q 484 371 472 362 L 408 325 L 408 325 L 458 312 L 458 312 Q 472 307 470 292 Q 465 279 450 281 L 369 303 L 369 303 L 288 256 L 288 256 L 369 209 L 369 209 L 450 231 L 450 231 Q 465 233 470 220 Q 472 205 458 200 L 408 187 L 408 187 L 472 150 L 472 150 Q 484 141 478 128 Q 469 116 456 122 L 392 159 L 392 159 L 406 109 L 406 109 Q 408 94 394 89 Q 380 87 375 100 L 353 181 L 353 181 L 272 228 L 272 228 L 272 135 L 272 135 L 331 75 L 331 75 Q 341 64 331 53 Q 320 43 309 53 L 272 89 L 272 89 L 272 16 L 272 16 Z"/>
+      </svg>
+      Conditioners
+    </div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'conditioners' %}">Conditioners</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'korzinka' %}" class="korzinka">
+        🛒 ({{ request.session.cart|length|default:0 }})
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Hush kelibsiz!</h1>
+    <p>Sovuq va zamonaviy konditsionerlar dunyosiga xush kelibsiz. Salqinlik — biz bilan!</p>
+
+    <a href="{% url 'conditioners' %}" id="snowBtn" class="btn-konditsioner">Konditsionerlar olamiga</a>
+    <div id="snowContainer"></div>
+
+      <script>
+  const btn = document.getElementById('snowBtn');
+  const snowContainer = document.getElementById('snowContainer');
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    btn.classList.add('clicked');
+
+    // 50 ta muz parcha hosil qilamiz
+    for (let i = 0; i < 50; i++) {
+      const snow = document.createElement('span');
+      snow.classList.add('snowflake');
+      snow.innerText = '❄️';
+
+      // Random pozitsiya va animatsiya
+      snow.style.left = Math.random() * 100 + 'vw';
+      snow.style.fontSize = `${12 + Math.random() * 20}px`;
+      snow.style.animationDuration = `${2 + Math.random() * 2}s`;
+
+      snowContainer.appendChild(snow);
+
+      // Har bir snowflake'ni 4 sekunddan keyin o‘chir
+      setTimeout(() => {
+        snow.remove();
+        btn.classList.remove('clicked');
+      }, 4000);
+    }
+  });
+</script>
+
+  </main>
+
+</body>
+</html>

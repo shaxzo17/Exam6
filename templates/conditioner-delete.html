@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>O‘chirishni tasdiqlang</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f0faff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .confirm-box {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+    }
+
+    h2 {
+      color: #004466;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .yes-btn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .yes-btn:hover {
+      background-color: #1e7e34;
+    }
+
+    .no-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .no-btn:hover {
+      background-color: #b21f2d;
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #0077b6;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confirm-box">
+    <h2>Ushbu konditsionerni o‘chirmoqchimisiz?</h2>
+    <form method="post" id="deleteForm">
+      {% csrf_token %}
+      <div class="btn-group">
+        <button type="submit" class="btn yes-btn" id="yesBtn">Ha</button>
+        <a href="{% url 'conditioner-detail' object.id %}" class="btn no-btn">Yo‘q</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Snowflake container -->
+  <script>
+    const form = document.getElementById('deleteForm');
+    const yesBtn = document.getElementById('yesBtn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      for (let i = 0; i < 30; i++) {
+        let snow = document.createElement('div');
+        snow.className = 'snowflake';
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        snow.style.fontSize = (Math.random() * 10 + 14) + 'px';
+        snow.innerText = '❄️';
+        document.body.appendChild(snow);
+
+        setTimeout(() => snow.remove(), 5000);
+      }
+
+      // delay redirect
+      setTimeout(() => {
+        form.submit();  // formni haqiqiy jo‘natish
+      }, 1200);
+    });
+  </script>
+
+</body>
+</html>
