@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyurtma berish | Conditioners</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .checkout-card {
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: none;
+    }
+    .checkout-header {
+      background-color: #0077b6;
+      color: white;
+      border-radius: 10px 10px 0 0 !important;
+    }
+    .form-control:focus {
+      border-color: #0077b6;
+      box-shadow: 0 0 0 0.25rem rgba(0, 119, 182, 0.25);
+    }
+    .btn-primary {
+      background-color: #0077b6;
+      border: none;
+      padding: 10px 20px;
+    }
+    .btn-primary:hover {
+      background-color: #005f87;
+    }
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card {
+      position: sticky;
+      top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand text-primary fw-bold" href="#">
+        <i class="fas fa-snowflake"></i> Conditioners
+      </a>
+      <div>
+        <a href="{% url 'korzinka' %}" class="btn btn-outline-primary me-2">
+          <i class="fas fa-arrow-left"></i> Savat
+        </a>
+        <a href="#" class="btn btn-primary position-relative">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ request.session.cart|length|default:0 }}
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <form method="post" action="{% url 'checkout' %}">
+          {% csrf_token %}
+          <div class="card checkout-card mb-4">
+            <div class="card-header checkout-header">
+              <h4 class="mb-0"><i class="fas fa-truck me-2"></i>Yetkazib berish ma'lumotlari</h4>
+            </div>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="firstName" class="form-label">Ism</label>
+                  <input type="text" class="form-control" id="firstName" name="first_name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="lastName" class="form-label">Familiya</label>
+                  <input type="text" class="form-control" id="lastName" name="last_name" required>
+                </div>
+                <div class="col-12">
+                  <label for="phone" class="form-label">Telefon raqam</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" required>
+                </div>
+                <div class="col-12">
+                  <label for="address" class="form-label">Manzil</label>
+                  <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                </div>
+                <div class="col-12">
+                  <label for="notes" class="form-label">Qo'shimcha izoh (ixtiyoriy)</label>
+                  <textarea class="form-control" id="notes" name="notes" rows="2"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <a href="{% url 'korzinka' %}" class="btn btn-outline-primary px-4">
+              <i class="fas fa-arrow-left me-2"></i> Ortga
+            </a>
+            <button type="submit" class="btn btn-primary px-4">
+              Davom etish <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card checkout-card summary-card">
+          <div class="card-header bg-white">
+            <h4 class="mb-0"><i class="fas fa-receipt me-2"></i>Buyurtma xulosasi</h4>
+          </div>
+          <div class="card-body">
+            <h6 class="mb-3">Mahsulotlar:</h6>
+            {% for product in products %}
+            <div class="d-flex justify-content-between mb-2">
+              <div>
+                <h6 class="mb-0">{{ product.name }}</h6>
+                <small class="text-muted">1 × ${{ product.price }}</small>
+              </div>
+              <span>${{ product.price }}</span>
+            </div>
+            {% endfor %}
+
+            <hr>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Mahsulotlar:</span>
+              <span>${{ total_price }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Yetkazish:</span>
+              <span>$0</span>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+              <span>Chegirma:</span>
+              <span>$0</span>
+            </div>
+            <div class="d-flex justify-content-between border-top pt-3">
+              <h5 class="mb-0">Jami:</h5>
+              <h5 class="mb-0 text-primary">${{ total_price }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

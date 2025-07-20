@@ -127,6 +127,7 @@
     </div>
     <nav>
       <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About</a>
       <a href="{% url 'conditioners' %}">Conditioners</a>
       <a href="{% url 'contact' %}">Contact</a>
       <a href="{% url 'korzinka' %}" class="korzinka">🛒 ({{ request.session.cart|length|default:0 }})</a>
